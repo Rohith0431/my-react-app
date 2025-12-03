@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Card from "./Card";
+import data from "./Data/data";
+import "bulma/css/bulma.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div>
+      <section className="hero is-primary">
+        <div className="hero-body">
+          <p className="title">Personal Digital Assistants</p>
+        </div>
+      </section>
+      <div className="container">
+        <section className="section">
+          <div className="columns">
+            {data.map((values, index) => {
+              return (
+                <div className="column is-4" key={index}>
+                  <Card
+                    image={values.img}
+                    title={values.title}
+                    tUsername={values.tUsername}
+                    description={values.description}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </section>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
